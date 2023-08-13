@@ -1,0 +1,113 @@
+.login-container *,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.login-form {
+    height: 650px;
+    width: 550px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 4rem;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form h1 {
+    font-size: 4rem;
+    line-height: 42px;
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 15%;
+}
+
+.login-label {
+    display: block;
+    margin-top: 30px;
+    font-size: 1rem;
+    padding-bottom: 2px;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    background-color: rgba(244, 253, 209, 0.76);
+    border-radius: 10px;
+    padding: 7px 6px;
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.login-button {
+    margin-top: 15%;
+    width: 100%;
+    background-color: #72408939;
+    color: #77a9daab;
+    padding: 10px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.login-social {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.login-social div:hover {
+    background-color: rgba(255, 255, 255, 0.47);
+}
+
+.login-social button {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    background-color: rgb(100, 95, 95);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 480px) {
+    .login-form {
+        height: 520px;
+        width: 325px;
+        padding: 35px 20px;
+    }
+
+    h1 {
+        padding-bottom: 5%;
+    }
+
+    .login-button {
+        margin-top: 1.5rem;
+    }
+
+    .login-social button {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,30 @@
+.navbar-container {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(26, 47, 33);
+    background: linear-gradient(90deg, rgba(26, 47, 33, 1) 10%, rgba(6, 6, 1, 1) 32%, rgba(64, 60, 7, 1) 56%, rgba(20, 55, 66, 1) 86%);
+}
+
+.navbar-title {
+    color: aliceblue;
+    font-size: 3vw;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+@media (max-width: 480px) {
+    .navbar-title {
+        font-size: 6vw;
+    }
+}
+
+.navbar-logout-button {
+    background-color: aliceblue;
+    padding: 10px;
+    margin: 10px;
+    font-size: 22px;
+    border-radius: 10px;
+}
