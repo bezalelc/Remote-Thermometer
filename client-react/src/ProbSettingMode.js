@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { useFirebase } from "./FirebaseContext";
 import './style/ProbSettingMode.css'
@@ -7,21 +6,6 @@ import './style/ProbSettingMode.css'
 
 const ProbSettingMode = ({ probData, probKey, itemIdFocus }) => {
     const { firebaseDB, userId } = useFirebase()
-
-    // const [isInSettingMode, setIsInSettingMode] = useState(true)
-    // const componentRef = useRef(null);
-
-    // useEffect(() => {
-    //     const isFocused = document.activeElement === componentRef.current;
-
-    //     if (isFocused) {
-    //         setIsInSettingMode(!isInSettingMode)
-    //         console.log(`My component ${key} is focused.`);
-    //     } else {
-    //         setIsInSettingMode(false)
-    //         console.log(`My component ${key} is not focused.`);
-    //     }
-    // }, []);
 
     const changeDestTemperatur = (mapKey, destTemperature_) => {
         const dbRefDestTemperature = ref(firebaseDB, `/UsersData/${userId}/${mapKey}/destTemperature`)

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useFirebase } from "./FirebaseContext";
-import { ref, set } from "firebase/database";
 import ProbSummery from './ProbSummery'
 import ProbSettingMode from './ProbSettingMode'
 import './style/ProbsList.css';

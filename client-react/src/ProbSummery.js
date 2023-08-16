@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const ProbSummery = ({ probData, probKey, itemIdFocus, setItemIdFocus }) => {
 
     const convertMillisToTime = (startTime, currentTime) => {
@@ -9,8 +11,16 @@ const ProbSummery = ({ probData, probKey, itemIdFocus, setItemIdFocus }) => {
         const minutes = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0')
         const remainingSeconds = (seconds % 60).toString().padStart(2, '0')
 
-        return `${hours !== '00' ? hours + ':' : ''}${minutes !== '00' ? minutes + ':' : ''}${remainingSeconds}`;
+        return `${hours}:${minutes}:${remainingSeconds}`;
     };
+
+    // useEffect(() => {
+    //     if (probData.temperature >= probData.destTemperature) {
+    //         const audio = new Audio('/ring.mp3')
+    //         // console.log(audio)
+    //         audio.play();
+    //     }
+    // }, [probData])
 
 
     return (

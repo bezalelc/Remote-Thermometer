@@ -6,6 +6,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 8px;
+    border-top: 2px rgb(106, 96, 96) solid;
 }
 
 @keyframes slide-down {
@@ -51,7 +53,6 @@
 
 .prob-setting-themperature-buttons-current,
 .prob-setting-timer-buttons-current {
-    background-color: aliceblue;
     font-size: 1.7rem;
     width: 3rem;
     text-align: center;
@@ -63,8 +64,11 @@
     padding: 0;
     cursor: pointer;
     border: 1px solid;
-    color: black;
+    color: rgb(206, 52, 52);
     font-size: 1.7rem;
     width: 2.5rem;
     height: 100%;
+    background:none;
+    border: none;
+    font-weight: 900;
 }

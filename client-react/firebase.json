@@ -3,7 +3,6 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-  "site": "client-react-456",
     "public": "build",
     "ignore": [
       "firebase.json",
