@@ -3,17 +3,11 @@
 #include "debugUtils.hpp"
 #include "ntc.hpp"
 
-// esp general
-#define MONITOR_SPEED 115200U
 // delay for update firebase
 #define DELAY 5000U
 #define FIREBASE_START_TIME_PATH "startTime/"
 
 Network *network;
-
-float temperature = -1;
-
-unsigned long sendDataPrevMillis = 0;
 
 void setup()
 {
