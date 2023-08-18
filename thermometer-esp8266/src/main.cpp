@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "network.hpp"
 #include "debugUtils.hpp"
+#include "ntc.hpp"
 
 // esp general
 #define MONITOR_SPEED 115200U
@@ -26,6 +27,5 @@ void loop()
 {
   // Send new readings to database
   delay(DELAY);
-  temperature += 1.1f;
-  network->updateTemperature(temperature, millis());
+  network->updateTemperature(Ntc::readTemperature(), millis());
 }
