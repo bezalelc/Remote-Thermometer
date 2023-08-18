@@ -4,6 +4,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    opacity: 0.9;
     background: rgb(26, 47, 33);
     background: linear-gradient(90deg, rgba(26, 47, 33, 1) 10%, rgba(6, 6, 1, 1) 32%, rgba(64, 60, 7, 1) 56%, rgba(20, 55, 66, 1) 86%);
 }
@@ -15,11 +18,6 @@
     padding-top: 10px;
 }
 
-@media (max-width: 480px) {
-    .navbar-title {
-        font-size: 6vw;
-    }
-}
 
 .navbar-logout-button {
     background-color: aliceblue;
@@ -27,4 +25,16 @@
     margin: 10px;
     font-size: 22px;
     border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    .navbar-title {
+        font-size: 6vw;
+    }
+
+    .navbar-logout-button {
+        padding: 5px;
+        margin: 5px;
+        font-size: 18px;
+    }
 }

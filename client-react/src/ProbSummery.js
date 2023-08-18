@@ -28,7 +28,7 @@ const ProbSummery = ({ probData, probKey, itemIdFocus, setItemIdFocus }) => {
             <div className="prob-list-title">Prob {probKey.match(/\d+/)[0]}</div>
             <div className="prob-data-deg-container" >
                 <div className="home-temperature-container" >
-                    <span className="temperature">{parseFloat(probData.temperature).toFixed(1)}</span>
+                    <span className="temperature">{parseFloat(probData.temperature).toFixed(2)}</span>
                     <span className="temperature-sing">&deg;</span>
                     <span className="home-temperature-c">C</span>
                 </div>
