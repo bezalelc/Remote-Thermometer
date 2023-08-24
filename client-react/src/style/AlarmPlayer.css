@@ -1,0 +1,32 @@
+.alarm-player button {
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: inherit;
+    border-radius: 9px;
+    border-style: inset;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    /* top/bottom padding | right/left padding */
+    font-style: italic;
+}
+
+.alarm-player-snooze-with-margin {
+    margin-left: 10px;
+}
+
+.alarm-player-blinking {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    50% {
+        background-color: rgba(253, 10, 10, 0.335);
+    }
+}

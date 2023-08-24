@@ -61,7 +61,7 @@ const Login = () => {
                 <input type="email" className="login-input" placeholder="youremail@mail.com" value={email} onChange={(event) => setEmail(event.target.value)} required />
                 <label htmlFor="password" className="login-label">Password</label>
                 <input type="password" className="login-input" placeholder="********" value={password} onChange={(event) => setPassword(event.target.value)} required />
-                <button type="submit" className="login-button" onClick={loginWithEmailPasswordHandler}>Log In</button>
+                <button type="submit" className="login-button" onClick={loginWithEmailPasswordHandler}>Login</button>
                 <div className="login-social">
                     <button className="login-social-google" onClick={loginWithGoogleHandler}><FontAwesomeIcon icon={faGoogle} />  Google</button>
                     <button className="login-social-facebook"><FontAwesomeIcon icon={faFacebook} className="login-social-facebook-icon" />  Facebook</button>

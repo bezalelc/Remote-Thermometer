@@ -1,0 +1,64 @@
+.temperature-view {
+    margin-bottom: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.temperature-view-container {
+    margin-bottom: 2rem;
+}
+
+.temperature-view-temperature {
+    font-size: 2rem;
+}
+
+.temperature-view-deg-sing {
+    font-size: 1.5rem;
+}
+
+.temperature-view-c-sing {
+    font-size: 1rem;
+}
+
+.temperature-view-set-temperature {
+    margin-bottom: 10px;
+}
+
+.temperature-view-dest {
+    font-size: 1.3rem;
+}
+
+.temperature-view-dest-buttons {
+    font-size: 1.5rem;
+}
+
+.temperature-view-dest-buttons button {
+    border-radius: 3px;
+    background: none;
+    font-size: 2rem;
+    border: none;
+    color: rgb(217, 20, 20);
+}
+
+.temperature-view-dest-buttons button:hover {
+    transform: scale(1.6);
+}
+
+.temperature-view-dest-current {
+    font-size: 2rem;
+}
+
+@media (max-width: 780px) {
+    .temperature-view-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .temperature-view-temperature {
+        font-size: 1.5rem;
+    }
+
+    .temperature-view-dest {
+        font-size: 1rem;
+    }
+}

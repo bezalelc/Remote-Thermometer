@@ -17,10 +17,8 @@ const Navbar = () => {
 
     return (
         <nav className="navbar-container">
+            {userId && <button className='navbar-logout-button' onClick={logoutHandler}>Logout</button>}
             <div className='navbar-title'>Remote Thermometer</div>
-            {/* <div className="navbar-logout"> */}
-                {userId && <button className='navbar-logout-button' onClick={logoutHandler}>Logout</button>}
-            {/* </div> */}
         </nav>
     );
 }

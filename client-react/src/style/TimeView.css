@@ -1,0 +1,50 @@
+.time-view {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.time-view-time {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.time-view-set-timer {
+    margin-bottom: 10px;
+}
+
+.time-view-set-text {
+    font-size: 1.3rem;
+}
+
+.time-view-set-buttons-current {
+    font-size: 2rem;
+}
+
+/* .time-view-set-buttons button {
+    border-radius: 3px;
+    background: none;
+    font-size: 2rem;
+    border: none;
+    color: rgb(217, 20, 20);
+} */
+
+/* .time-view-set-buttons button:hover {
+    transform: scale(1.6);
+} */
+
+.time-view-time-picker {
+    /* border-radius: 80px; */
+    /* background-color: aqua; */
+    /* border-style: solid;  */
+}
+
+@media (max-width: 700px) {
+    .time-view-time {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .time-view-set-text {
+        font-size: 1rem;
+    }
+}

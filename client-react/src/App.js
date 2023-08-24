@@ -11,7 +11,7 @@ function App() {
     <FirebaseProvider>
       <Router>
         <div className="App">
-        <Navbar />
+          <Navbar />
           <Switch>
             <Route exact path='/' component={Login} />
             <PrivateRoute path='/home' component={Home} />
