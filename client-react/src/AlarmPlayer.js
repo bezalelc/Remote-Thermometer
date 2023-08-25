@@ -5,7 +5,7 @@ const AlarmPlayer = ({ probId, currentVal, destVal }) => {
     const [alarmWait, setAlarmWait] = useState(false)
     const [snooze, setSnooze] = useState(false)
     const [isPlayingNow, setIsPlayingNow] = useState(false)
-    const temperaturAlarmSoundRef = useRef(new Audio('./resources/sound/mixkit-sound-alert-in-hall-1006.wav'))
+    const temperaturAlarmSoundRef = useRef(new Audio('./resources/sound/sound-alert-in-hall.wav'))
 
     useEffect(() => {
         if (alarmWait && currentVal >= destVal) {
