@@ -1,25 +1,47 @@
 #include <Arduino.h>
-#include "network.hpp"
 #include "debugUtils.hpp"
 #include "ntc.hpp"
+#include "configData.hpp"
+#include "network.hpp"
+#include "firebaseHandler.hpp"
 
 // delay for update firebase
 #define DELAY 5000U
 #define FIREBASE_START_TIME_PATH "startTime/"
+#define PROPS_NUM 4
 
+ConfigData configData;
 Network *network;
+FirebaseHandler *firebaseHandler;
+
+void restartConnection()
+{
+  network->connectToWifi();
+  firebaseHandler->begin();
+}
 
 void setup()
 {
   DEBUG_MODE_SERIAL_BEGIN;
-  network = new Network();
+  // configData = ConfigData;
+  network = &Network::getInstance(configData);
+  firebaseHandler = &FirebaseHandler::getInstance(configData);
+  restartConnection();
   // update start time
-  network->updateTime(FIREBASE_START_TIME_PATH, millis());
+  firebaseHandler->updateTime(FIREBASE_START_TIME_PATH, millis());
 }
 
 void loop()
 {
-  // Send new readings to database
-  delay(DELAY);
-  network->updateTemperature(Ntc::readTemperature(), millis());
+  if (network->getConfigMode())
+  {
+    network->APMode();
+    restartConnection();
+  }
+  else
+  {
+    // Send new readings to database
+    firebaseHandler->updateTemperature(Ntc::readTemperature(), millis());
+  }
+  delay(2000);
 }

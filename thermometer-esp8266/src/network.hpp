@@ -1,29 +1,33 @@
-#ifndef NETWORK_HPP
-#define NETWORK_HPP
+#ifndef NETWORKN_HPP
+#define NETWORKN_HPP
 
-#include <Firebase_ESP_Client.h>
-// #include <ArduinoJson.h>
+#include <ESP8266WiFi.h>
+#include "configData.hpp"
 
 class Network
 {
-private:
-    FirebaseData firebaseData;
-    FirebaseAuth firebaseAuth;
-    FirebaseConfig firebaseConfig;
-    // StaticJsonDocument<200> jsonDocument;
-    // DynamicJsonDocument jsonDocument;
-    String databasePath;
-
-    void initFirebase();
-    void initWifi();
-    void setFirebasePath();
-
 public:
-    // static Network *getInstance();
-    Network();
+    bool getConfigMode();
 
-    void updateTemperature(float temperature, unsigned long time);
-    void updateTime(const char *timePath, unsigned long time);
+    void APMode();
+
+    void connectToWifi();
+
+    static Network &getInstance(ConfigData &configData);
+
+    static bool configMode;
+private:
+    WiFiServer server;
+    ConfigData &configData;
+    static Network *instance;
+
+    Network(ConfigData &configData);
+
+    static void IRAM_ATTR setAP();
+
+    // Private copy constructor and assignment operator to prevent copying
+    Network(const Network &) = delete;
+    Network &operator=(const Network &) = delete;
 };
 
 #endif
