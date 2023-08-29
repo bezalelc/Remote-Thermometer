@@ -44,7 +44,7 @@ const TimeView = ({ probId, probData }) => {
                 Time: {convertMillisToTime(probData.startTime, probData.currentTime)}
             </div>
             <div className="time-view-set-timer">
-                <span className="time-view-set-text">Set time alarm</span>
+                <span className="time-view-set-text">Set time alert</span>
                 <div className="time-view-picker">
                     <TimePicker
                         onChange={handleTimeChange}

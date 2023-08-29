@@ -1,15 +1,22 @@
 .time-view {
     font-size: 1.5rem;
     text-align: center;
+    background-color: rgb(91, 152, 206, 0.05);
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .time-view-time {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .time-view-set-timer {
     margin-bottom: 10px;
+}
+
+.time-view-time-picker {
+    padding-top: 3px;
 }
 
 .time-view-set-text {
@@ -20,25 +27,11 @@
     font-size: 2rem;
 }
 
-/* .time-view-set-buttons button {
-    border-radius: 3px;
-    background: none;
-    font-size: 2rem;
-    border: none;
-    color: rgb(217, 20, 20);
-} */
-
-/* .time-view-set-buttons button:hover {
-    transform: scale(1.6);
-} */
-
-.time-view-time-picker {
-    /* border-radius: 80px; */
-    /* background-color: aqua; */
-    /* border-style: solid;  */
-}
-
 @media (max-width: 700px) {
+    .time-view {
+        margin-bottom: .5rem;
+    }
+
     .time-view-time {
         font-size: 1.5rem;
         margin-bottom: 1rem;

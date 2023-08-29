@@ -19,7 +19,7 @@ const Temperature = ({ probId, probData }) => {
                 <span className="temperature-view-c-sing">C</span>
             </div>
             <div className="temperature-view-set-temperature">
-                <span className="temperature-view-dest">Dest temperature:</span>
+                <span className="temperature-view-dest">Destination temperature</span>
                 <div className="temperature-view-dest-buttons">
                     <button onClick={() => changeDestTemperatur(parseInt(probData.destTemperature) + 1)}>+</button>
                     <span className="temperature-view-dest-current">{probData.destTemperature}</span>

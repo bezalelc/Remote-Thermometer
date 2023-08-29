@@ -14,7 +14,7 @@ const AlarmPlayer = ({ probId, currentVal, destVal }) => {
 
             temperaturAlarmSoundRef.current.onended = () => {
                 setIsPlayingNow(false)
-                if (alarmWait) {
+                if (alarmWait) { 
                     setTimeout(() => {
                         temperaturAlarmSoundRef.current.play()
                         setIsPlayingNow(true)
@@ -53,7 +53,7 @@ const AlarmPlayer = ({ probId, currentVal, destVal }) => {
 
     return (
         <div className={`alarm-player ${isPlayingNow ? 'alarm-player-blinking' : ''}`}>
-            <button onClick={setStopHandler} className='alarm-player-start'>{alarmWait || snooze ? "Stop Alarm" : "Set Alarm"}</button>
+            <button onClick={setStopHandler} className='alarm-player-start'>{alarmWait || snooze ? "Alert on" : "Alert off"}</button>
             {isPlayingNow && <button onClick={snoozeHandler} className={`alarm - player - snooze ${isPlayingNow ? 'alarm-player-snooze-with-margin' : ''} `}>Snooze</button>}
         </div>
     );
