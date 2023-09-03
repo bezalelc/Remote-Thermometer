@@ -7,17 +7,25 @@
     z-index: 0;
 }
 
+.navbar-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 
-.navbar-logout-button {
+.navbar-buttons button {
     align-self: flex-end;
     padding: 0.4rem;
     font-size: 1.5rem;
     font-weight: 600;
-    margin-top: 8px;
-    margin-right: 5px;
-    border-radius: 10px;
-    color: inherit;
-    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 3px;
+    border-right: solid 1px rgba(253, 253, 253, 0.813);
+    border-left: solid 1px rgba(244, 227, 227, 0.813);
+    border-top-color: inherit;
+    border-bottom-color: inherit;
+    /* border: none; */
+    color: rgb(219, 240, 240);
+    background-color: rgba(0, 0, 0, 0);
     transition: transform 0.2s;
 }
 

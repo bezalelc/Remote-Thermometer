@@ -1,0 +1,90 @@
+.config-filed-container {
+    background-color: rgb(91, 152, 206, 0.05);
+    align-self: center;
+    margin-bottom: 1rem;
+    /* margin-top: 2rem; */
+    padding: 10px 10px;
+    border-radius: 15px;
+}
+
+.config-field {
+    font-size: 1.5rem;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.5fr;
+    grid-gap: 10px;
+    /* padding-bottom: 5px; */
+    margin-top: 10px;
+    /* border-bottom: 1px solid; */
+}
+
+.config-field label {
+    font-size: 1.5rem;
+    align-self: end;
+}
+
+.config-field input {
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.4rem;
+    width: 80%;
+    box-sizing: border-box;
+    justify-self: end;
+    margin-right: 0.8rem;
+    background-color: rgba(232, 94, 94, 0.123);
+    color: aliceblue;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.config-field-name {
+    border-bottom: 1px solid;
+    padding-bottom: 0.7rem;
+    margin-bottom: 0.2rem;
+}
+
+.config-field-password-input {
+    background-color: #f2f2f2;
+}
+
+/* 
+.config-field-input::placeholder {
+    font-size:4rem;
+} */
+
+.config-field button {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 3px;
+    border: solid 1px rgba(244, 227, 227, 0.813);
+    border-top-color: inherit;
+    border-bottom-color: inherit;
+    color: rgb(196, 238, 238);
+    background-color: rgba(0, 0, 0, 0);
+    transition: transform 0.2s;
+}
+
+@media (max-width: 480px) {
+    .config-filed-container {
+        margin-bottom: 1rem;
+    }
+
+    .config-field {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+        margin-bottom: 0;
+        padding: 0px 0px;
+        justify-content: center;
+    }
+
+    .config-field input {
+        width: 100%;
+    }
+
+    .config-field button {
+        margin-bottom: 1rem;
+    }
+}

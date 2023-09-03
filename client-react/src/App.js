@@ -20,7 +20,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Login} />
             <PrivateRoute path='/home' component={Home} />
-            <Route exact path='/config' component={ConfigPage} />
+            <PrivateRoute exact path='/config' component={ConfigPage} />
           </Switch>
         </div>
       </Router>
