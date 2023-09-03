@@ -23,19 +23,20 @@ ConfigData &ConfigData::getInstance()
     return instance;
 }
 
-void ConfigData::updateConfig(CONFIG_DATA_TYPE dataType, const char *buff, uint8_t buffLen)
+void ConfigData::updateConfig(CONFIG_DATA_TYPE dataType, const String buff)
 {
-    uint8_t offset = BUFF_MAX_LEN * dataType;
-
-    DEBUG_MODE_PRINT_NAMES_VALUES(dataType, offset, buff, buffLen - 1);
-
+    uint8_t offset = BUFF_MAX_LEN * dataType, address = 0;
+    DEBUG_MODE_PRINT_NAMES_VALUES(dataType, offset, buff);
     char *ptr2Update = reinterpret_cast<char *>(this) + offset;
-    memcpy(ptr2Update, buff, buffLen - 1);
 
-    for (uint8_t address = 0; address < buffLen; address++, offset++)
+    for (; address < buff.length(); address++, offset++)
     {
+        ptr2Update[offset] = buff[address];
         EEPROM.write(offset, buff[address]);
     }
+    ptr2Update[offset] = 0;
+    EEPROM.write(offset, 0);
+
     EEPROM.commit();
 }
 

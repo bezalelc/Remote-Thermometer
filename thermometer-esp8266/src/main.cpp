@@ -23,16 +23,22 @@ void restartConnection()
 void setup()
 {
   DEBUG_MODE_SERIAL_BEGIN;
-  // configData = ConfigData;
+  // delay(1000);
+
   network = &Network::getInstance(configData);
   firebaseHandler = &FirebaseHandler::getInstance(configData);
-  restartConnection();
+  if (network->getConfigMode())
+  {
+    restartConnection();
+  }
+
   // update start time
   firebaseHandler->updateTime(FIREBASE_START_TIME_PATH, millis());
 }
 
 void loop()
 {
+  // Serial.print()
   if (network->getConfigMode())
   {
     network->APMode();
@@ -43,5 +49,7 @@ void loop()
     // Send new readings to database
     firebaseHandler->updateTemperature(Ntc::readTemperature(), millis());
   }
+  
+  DEBUG_MODE_PRINT_MEMORY_USAGE;
   delay(2000);
 }

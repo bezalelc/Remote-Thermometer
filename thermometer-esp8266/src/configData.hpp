@@ -1,6 +1,8 @@
 #ifndef CONFIG_DATA_HPP
 #define CONFIG_DATA_HPP
 
+#include <Arduino.h>
+
 #define BUFF_MAX_LEN 33
 
 class ConfigData
@@ -37,7 +39,7 @@ public:
 
     static ConfigData &getInstance();
 
-    void updateConfig(CONFIG_DATA_TYPE dataType, const char *buff, uint8_t buffLen);
+    void updateConfig(CONFIG_DATA_TYPE dataType, const String buff);
 
     const char &getUsername() const;
 
