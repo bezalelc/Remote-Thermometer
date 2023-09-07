@@ -14,16 +14,11 @@ ConfigData configData;
 Network *network;
 FirebaseHandler *firebaseHandler;
 
-void restartConnection()
-{
-  network->connectToWifi();
-  firebaseHandler->begin();
-}
+void restartConnection();
 
 void setup()
 {
   DEBUG_MODE_SERIAL_BEGIN;
-  // delay(1000);
 
   network = &Network::getInstance(configData);
   firebaseHandler = &FirebaseHandler::getInstance(configData);
@@ -49,7 +44,13 @@ void loop()
     // Send new readings to database
     firebaseHandler->updateTemperature(Ntc::readTemperature(), millis());
   }
-  
+
   DEBUG_MODE_PRINT_MEMORY_USAGE;
-  delay(2000);
+  delay(5000);
+}
+
+void restartConnection()
+{
+  network->connectToWifi();
+  firebaseHandler->begin();
 }

@@ -1,5 +1,6 @@
 #include "network.hpp"
 #include "debugUtils.hpp"
+// #include "configData.hpp"
 
 #define MAX_CONNECTION 4
 #define CONFIG_INPUT_PIN D2
@@ -35,22 +36,52 @@ bool Network::getConfigMode()
 void Network::handleUpdate()
 {
     WiFiClient client = server.client();
-    String userMessage = server.hasArg("plain") ? server.arg("plain") : "";
-
-    if (0 < userMessage.length() && userMessage.length() <= BUFF_MAX_LEN && '0' <= userMessage[0] && userMessage[0] < '7')
+    // String userMessage = server.hasArg("plain") ? server.arg("plain") : "";
+    bool isValidRequest = server.args() > 0 && server.args() < 7;
+    for (int i = 0; i < server.args() && isValidRequest; i++)
     {
-        DEBUG_MODE_PRINT_NAMES_VALUES(userMessage);
-        configData.updateConfig((ConfigData::CONFIG_DATA_TYPE)(userMessage[0] - '0'), userMessage.substring(1));
-        server.sendHeader("Access-Control-Allow-Origin", "*");
-        server.send(200, "text/plain", "OK");
+        isValidRequest = server.argName(i).length() == 1 &&
+                         server.argName(i)[0] >= '0' &&
+                         server.argName(i)[0] < '7' &&
+                         server.arg(i).length() > 0 &&
+                         server.arg(i).length() <= BUFF_MAX_LEN;
+    }
+
+    DEBUG_MODE_PRINT_NAMES_VALUES(server.args(), isValidRequest);
+
+    server.sendHeader("Access-Control-Allow-Origin", "*");
+    if (isValidRequest)
+    {
+        for (int i = 0; i < server.args(); i++)
+        {
+            DEBUG_MODE_PRINT_NAMES_VALUES(i, server.argName(i), server.arg(i));
+            configData.updateConfig((ConfigData::CONFIG_DATA_TYPE)(server.argName(i)[0] - '0'), server.arg(i));
+        }
+        server.send(200, "text/plain", "Updated successfully, you can close this page\n");
     }
     else
     {
-        server.sendHeader("Access-Control-Allow-Origin", "*");
-        server.send(400, "text/plain", "Bad Request\n");
+        server.send(400, "text/plain", "Oops... Something went wrong!!!   ):\n");
     }
 
-    DEBUG_MODE_PRINT_NAMES_VALUES(userMessage);
+    // if (0 < userMessage.length() && userMessage.length() <= BUFF_MAX_LEN && '0' <= userMessage[0] && userMessage[0] < '7')
+    // {
+    //     DEBUG_MODE_PRINT_NAMES_VALUES(userMessage);
+    //     configData.updateConfig((ConfigData::CONFIG_DATA_TYPE)(userMessage[0] - '0'), userMessage.substring(1));
+    //     server.sendHeader("Access-Control-Allow-Origin", "*");
+    //     server.send(200, "text/plain", "OK");
+    // }
+    // else
+    // {
+    //     server.sendHeader("Access-Control-Allow-Origin", "*");
+    //     server.send(400, "text/plain", "Bad Request\n");
+    // }
+    // }
+    // DEBUG_MODE_PRINT_VALUES(message);
+
+    // }
+
+    // DEBUG_MODE_PRINT_NAMES_VALUES(userMessage);
 }
 
 void Network::APMode()
@@ -58,14 +89,16 @@ void Network::APMode()
     WiFi.mode(WIFI_AP);
     WiFi.softAP(configData.apSSID, configData.apPassword, 1, false, MAX_CONNECTION);
     server.begin();
-    server.on("/config", HTTP_POST, [this]()
+    server.on("/config", HTTP_GET, [this]()
               { this->handleUpdate(); });
+    // server.on("/config", HTTP_POST, [this]()
+    //           { this->handleUpdate(); });
 
     DEBUG_MODE_PRINT_NAMES_VALUES(WiFi.softAPIP(), configData.apSSID, configData.apPassword);
     while (configMode)
     {
         server.handleClient();
-        // delay(100);
+        delay(200);
     }
 
     server.stop();
