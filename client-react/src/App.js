@@ -13,7 +13,7 @@ function App() {
     <FirebaseProvider>
       <Router>
         <div className="App">
-          <video autoPlay loop muted playsInline className="app-background-video">
+          <video autoPlay loop muted playsInline preload="auto" className="app-background-video">
             <source src="/resources/video/background22.mp4" type="video/mp4" />
           </video>
           <Navbar />
