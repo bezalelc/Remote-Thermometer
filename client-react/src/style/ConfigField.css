@@ -66,6 +66,28 @@
     transition: transform 0.2s;
 }
 
+.config-field-link {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.4rem;
+    border-radius: 3px;
+    border: solid 1px rgba(244, 227, 227, 0.813);
+    border-top-color: inherit;
+    border-bottom-color: inherit;
+    color: rgb(196, 238, 238);
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.config-field-link:hover {
+    background-color: rgba(54, 92, 73, 0.359);
+    transform: scale(1.05);
+}
+
 @media (max-width: 480px) {
     .config-filed-container {
         margin-bottom: 1rem;

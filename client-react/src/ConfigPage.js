@@ -55,10 +55,10 @@ const ConfigPage = () => {
 
 
     const postData = (dataTypeId, data) => {
-        const url = 'http://192.168.4.1/config';
+        const url = `http://192.168.4.1:80/config?${dataTypeId}=${data}`;
         fetch(url, {
-            method: 'POST',
-            body: dataTypeId + data,
+            method: 'GET',
+            // body: dataTypeId + data,
         })
             .then(res => {
                 if (res.ok) {
