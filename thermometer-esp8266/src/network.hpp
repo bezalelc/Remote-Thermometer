@@ -18,6 +18,13 @@ public:
 
     static bool configMode;
 
+    // typedef enum CONFIG_MODE
+    // {
+    //     CONFIG_MODE_THERMOMETER,
+    //     CONFIG_MODE_AP,
+
+    // }CONFIG_MODE;
+
 private:
     ESP8266WebServer server;
     ConfigData &configData;

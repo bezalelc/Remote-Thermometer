@@ -4,10 +4,10 @@
 #include "config.h"
 #include "debugUtils.hpp"
 #include "network.hpp"
+// #include <Firebase_ESP_Client.h>
 
 // firebase project API Key
 #define FIREBASE_MAIN_PATH "/UsersData/"
-#define FIREBASE_PROB1_PATH "/prob1/"
 #define FIREBASE_TEMPERATURE_PATH "temperature/"
 #define FIREBASE_CURRENT_TIME_PATH "currentTime/"
 
@@ -56,17 +56,66 @@ void FirebaseHandler::begin()
 
     String userId = firebaseAuth.token.uid.c_str();
     // Update database path
-    databasePath = FIREBASE_MAIN_PATH + userId + FIREBASE_PROB1_PATH;
+    databasePath = FIREBASE_MAIN_PATH + userId + "/";
 }
 
-void FirebaseHandler::updateTemperature(float temperature, unsigned long time)
+bool FirebaseHandler::update(StaticJsonDocument<512> &doc) const
 {
     if (!Firebase.ready())
     {
+        DEBUG_MODE_PRINT_VALUES("Firebase.ready()=false");
+        return false;
+    }
+
+    // FirebaseJson json;
+    // json.setDoubleDigits(3);
+    // json.add("value", 9);
+
+    // FirebaseJsonArray arr;
+    // arr.setDoubleDigits(3);
+    // arr.setJsonArrayData("[1,2,3]");
+    // arr.toString(Serial, true);
+
+    // String p = "/k/";
+    // firebaseData.;
+    // firebaseData.setJSON(json);
+    // Firebase.RTDB.set(&firebaseData, p.c_str());
+    // Firebase.RTDB.setJSON(&firebaseData, p.c_str(), &json);
+
+    // Serial.printf("Set json... %s\n", Firebase.RTDB.setJSON(&firebaseData, "/test/json", &json) ? "ok" : firebaseData.errorReason().c_str());
+
+    return true;
+}
+
+// bool FirebaseHandler::updateTemperature(uint8 probId, float temperature) const
+// {
+//     if (!Firebase.ready())
+//     {
+//         DEBUG_MODE_PRINT_VALUES("Firebase.ready()=false");
+//         return false;
+//     }
+
+//     if (Firebase.RTDB.setFloat(&firebaseData, (databasePath + probId + "/" + FIREBASE_TEMPERATURE_PATH).c_str(), temperature))
+//     {
+//         DEBUG_MODE_PRINT_VALUES("Writing value: ", temperature, " TYPE: " + firebaseData.dataType() + " on the following path: ", databasePath, ", PASSED");
+//     }
+//     else
+//     {
+//         DEBUG_MODE_PRINT_VALUES(databasePath, "FAILED: " + firebaseData.errorReason());
+//     }
+//     return true;
+// }
+
+void FirebaseHandler::updateTemperature(uint8 probId, float temperature, unsigned long time)
+{
+
+    if (!Firebase.ready())
+    {
+        DEBUG_MODE_PRINT_VALUES("Firebase.ready()=false");
         return;
     }
 
-    if (Firebase.RTDB.setFloat(&firebaseData, (databasePath + FIREBASE_TEMPERATURE_PATH).c_str(), temperature))
+    if (Firebase.RTDB.setFloat(&firebaseData, (databasePath + FIREBASE_PROB_PATH + (probId + 1) + "/" + FIREBASE_TEMPERATURE_PATH).c_str(), temperature))
     {
         DEBUG_MODE_PRINT_VALUES("Writing value: ", temperature, " TYPE: " + firebaseData.dataType() + " on the following path: ", databasePath, ", PASSED");
     }
@@ -74,12 +123,13 @@ void FirebaseHandler::updateTemperature(float temperature, unsigned long time)
     {
         DEBUG_MODE_PRINT_VALUES(databasePath, "FAILED: " + firebaseData.errorReason());
     }
-    updateTime(FIREBASE_CURRENT_TIME_PATH, time);
+    String tmp = "";
+    updateTime((tmp + FIREBASE_PROB_PATH + (probId + 1) + "/" + FIREBASE_CURRENT_TIME_PATH).c_str(), time);
 }
 
-void FirebaseHandler::updateTime(const char *timePath, unsigned long time)
+void FirebaseHandler::updateTime(const char *probTimePath, unsigned long time)
 {
-    if (Firebase.RTDB.setFloat(&firebaseData, (databasePath + timePath).c_str(), time))
+    if (Firebase.RTDB.setFloat(&firebaseData, (databasePath + probTimePath).c_str(), time))
     {
         DEBUG_MODE_PRINT_VALUES("Writing value: ", time, " TYPE: ", firebaseData.dataType(), " on the following path: ", databasePath, ", PASSED");
     }

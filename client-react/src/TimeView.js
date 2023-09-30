@@ -11,11 +11,12 @@ const TimeView = ({ probId, probData }) => {
     const dbRefDestTime = ref(firebaseDB, `/UsersData/${userId}/${probId}/destTime`)
 
     const convertMillisToTime = (startTime, currentTime) => {
-        // console.log(probId, 'convertMillisToTime', startTime, currentTime)
+        // console.log(probId, 'convertMillisToTime', startTime, currentTime,millisToTime(parseInt(currentTime) - parseInt(startTime)))
         return millisToTime(parseInt(currentTime) - parseInt(startTime))
     };
 
     const millisToTime = millis => {
+        
         // console.log(probId, 'millisToTime', millis)
         if (millis !== null && millis !== undefined && millis !== 0) {
             const seconds = Math.floor(parseInt(millis) / 1000);

@@ -15,7 +15,7 @@ Network::Network(ConfigData &configData) : server(SERVER_PORT), configData(confi
 
     pinMode(CONFIG_INPUT_PIN, INPUT_PULLUP);
     // attachInterruptArg(digitalPinToInterrupt(CONFIG_INPUT_PIN), &Network::setAP, this, CHANGE);
-    configMode = digitalRead(CONFIG_INPUT_PIN);
+    configMode = !digitalRead(CONFIG_INPUT_PIN);
     attachInterrupt(digitalPinToInterrupt(CONFIG_INPUT_PIN), &Network::setAP, CHANGE);
 }
 
@@ -130,5 +130,5 @@ void Network::connectToWifi()
  */
 void IRAM_ATTR Network::setAP()
 {
-    configMode = (bool)digitalRead(CONFIG_INPUT_PIN);
+    configMode = !(bool)digitalRead(CONFIG_INPUT_PIN);
 }

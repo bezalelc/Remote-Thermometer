@@ -9,17 +9,15 @@ body {
     color: rgb(195, 217, 236);
 }
 
-@keyframes slowMotion {
+/* @keyframes slowMotion {
     0% {
         playback-rate: 1;
-        /* Slow motion speed */
     }
 
     100% {
         playback-rate: 1;
-        /* Slow motion speed */
     }
-}
+} */
 
 .app-background-video {
     position: fixed;

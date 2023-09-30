@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './style/AlarmPlayer.css'
 
-const AlarmPlayer = ({ probId, currentVal, destVal }) => {
+const AlarmPlayer = ({ currentVal, destVal }) => {
     const [alarmWait, setAlarmWait] = useState(false)
     const [snooze, setSnooze] = useState(false)
     const [isPlayingNow, setIsPlayingNow] = useState(false)
@@ -14,7 +14,7 @@ const AlarmPlayer = ({ probId, currentVal, destVal }) => {
 
             temperaturAlarmSoundRef.current.onended = () => {
                 setIsPlayingNow(false)
-                if (alarmWait) { 
+                if (alarmWait) {
                     setTimeout(() => {
                         temperaturAlarmSoundRef.current.play()
                         setIsPlayingNow(true)
